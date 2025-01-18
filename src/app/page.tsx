@@ -11,7 +11,8 @@ export default function Home() {
 
   type Game = {
     date: string;
-    opponent: string;
+    opponentGeneral: string;
+    playerGeneral: string;
     result: "win" | "loss";
   };
 
@@ -37,8 +38,24 @@ export default function Home() {
       tournaments: ["Весенний чемпионат 2023", "Зимний Кубок 2022"],
       awards: ["Лучший стратег 2023", "Мастер воздушных боёв 2022"],
       games: [
-        { date: "2023-01-15", opponent: "Player A", result: "win" },
-        { date: "2023-01-20", opponent: "Player B", result: "loss" },
+        {
+          date: "2025-01-01",
+          playerGeneral: "China Infantry",
+          opponentGeneral: "USA Air Force",
+          result: "win",
+        },
+        {
+          date: "2025-01-02",
+          playerGeneral: "USA Laser",
+          opponentGeneral: "GLA Stealth",
+          result: "loss",
+        },
+        {
+          date: "2025-01-03",
+          playerGeneral: "GLA Toxin",
+          opponentGeneral: "China Nuke",
+          result: "win",
+        },
       ],
     },
     {
@@ -50,8 +67,24 @@ export default function Home() {
       tournaments: ["Летний Турнир 2023", "Осенняя Лига 2022"],
       awards: ["Мастер скрытности 2023"],
       games: [
-        { date: "2023-01-12", opponent: "Player C", result: "win" },
-        { date: "2023-01-18", opponent: "Player D", result: "win" },
+        {
+          date: "2025-01-01",
+          playerGeneral: "China Infantry",
+          opponentGeneral: "USA Air Force",
+          result: "win",
+        },
+        {
+          date: "2025-01-02",
+          playerGeneral: "USA Laser",
+          opponentGeneral: "GLA Stealth",
+          result: "loss",
+        },
+        {
+          date: "2025-01-03",
+          playerGeneral: "GLA Toxin",
+          opponentGeneral: "China Nuke",
+          result: "win",
+        },
       ],
     },
   ];
@@ -104,57 +137,58 @@ export default function Home() {
   </div>
 
   {/* Модальное окно */}
-  {selectedPlayer && (
-  <Dialog.Root open={!!selectedPlayer} onOpenChange={() => setSelectedPlayer(null)}>
-    <Dialog.Portal>
-      <Dialog.Overlay className={styles.dialogOverlay} />
-      <Dialog.Content className={`${styles.dialogContent} ${styles.expandedDialogContent}`}>
-        <Dialog.Title className={styles.dialogTitle}>
-          {selectedPlayer.name}
-        </Dialog.Title>
-        
-        {/* Вкладки */}
-        <Tabs.Root defaultValue="info">
-          <Tabs.List className={styles.tabList}>
-            <Tabs.Trigger value="info" className={styles.tabTrigger}>
-              Личная информация
-            </Tabs.Trigger>
-            <Tabs.Trigger value="games" className={styles.tabTrigger}>
-              Игры
-            </Tabs.Trigger>
-          </Tabs.List>
+          {selectedPlayer && (
+            <Dialog.Root open={!!selectedPlayer} onOpenChange={() => setSelectedPlayer(null)}>
+              <Dialog.Portal>
+                <Dialog.Overlay className={styles.dialogOverlay} />
+                <Dialog.Content className={`${styles.dialogContent} ${styles.expandedDialogContent}`}>
+                  <Dialog.Title className={styles.dialogTitle}>
+                    {selectedPlayer.name}
+                  </Dialog.Title>
 
-          {/* Вкладка: Личная информация */}
-          <Tabs.Content value="info" className={styles.tabContent}>
-            <div className={styles.infoContainer}>
-              <p>
-                <strong>Описание:</strong> {selectedPlayer.description}
-              </p>
-              <p>
-                <strong>Любимые генералы:</strong>{" "}
-                {selectedPlayer.favoriteGenerals.join(", ")}
-              </p>
-              <p>
-                <strong>Опыт:</strong> {selectedPlayer.experience}
-              </p>
-              <p>
-                <strong>Серия турниров:</strong>{" "}
-                {selectedPlayer.tournaments.join(", ")}
-              </p>
-              <p>
-                <strong>Награды:</strong> {selectedPlayer.awards.join(", ")}
-              </p>
-            </div>
-          </Tabs.Content>
+                  {/* Вкладки */}
+                  <Tabs.Root defaultValue="info">
+                    <Tabs.List className={styles.tabList}>
+                      <Tabs.Trigger value="info" className={styles.tabTrigger}>
+                        Личная информация
+                      </Tabs.Trigger>
+                      <Tabs.Trigger value="games" className={styles.tabTrigger}>
+                        Игры
+                      </Tabs.Trigger>
+                    </Tabs.List>
 
-          {/* Вкладка: Игры */}
-          <Tabs.Content value="games" className={styles.tabContent}>
+                    {/* Вкладка: Личная информация */}
+                    <Tabs.Content value="info" className={styles.tabContent}>
+                      <div className={styles.infoContainer}>
+                        <p  className={styles.tableCell}>
+                          <strong>Описание:</strong> {selectedPlayer.description}
+                        </p>
+                        <p  className={styles.tableCell}>
+                          <strong>Любимые генералы:</strong>{" "}
+                          {selectedPlayer.favoriteGenerals.join(", ")}
+                        </p>
+                        <p  className={styles.tableCell}>
+                          <strong>Опыт:</strong> {selectedPlayer.experience}
+                        </p>
+                        <p  className={styles.tableCell}>
+                          <strong>Серия турниров:</strong>{" "}
+                          {selectedPlayer.tournaments.join(", ")}
+                        </p>
+                        <p  className={styles.tableCell}>
+                          <strong >Награды:</strong> {selectedPlayer.awards.join(", ")}
+                        </p>
+                      </div>
+                    </Tabs.Content>
+
+                    {/* Вкладка: Игры */}
+                    <Tabs.Content value="games" className={styles.tabContent}>
             <h3>Игры</h3>
             <Table.Root className={styles.tableRoot}>
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell>Дата</Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell>Противник</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Ваш генерал</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Генерал противника</Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell>Результат</Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell>Рейтинг</Table.ColumnHeaderCell>
                 </Table.Row>
@@ -170,7 +204,8 @@ export default function Home() {
                       className={game.result === "win" ? styles.winRow : styles.lossRow}
                     >
                       <Table.RowHeaderCell>{game.date}</Table.RowHeaderCell>
-                      <Table.Cell>{game.opponent}</Table.Cell>
+                      <Table.Cell className={styles.tableCell}>{game.playerGeneral}</Table.Cell>
+                      <Table.Cell className={styles.tableCell}>{game.opponentGeneral}</Table.Cell>
                       <Table.Cell
                         className={game.result === "win" ? styles.winText : styles.lossText}
                       >
