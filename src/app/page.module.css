@@ -1,168 +1,353 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
 .main {
+  background-color: #1e1f26; /* Темно-синий фон */
+  scroll-behavior: smooth;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
   align-items: center;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 36px;
+  color: #d6e3f0; /* Светлый текст */
+}
+
+.header .highlight {
+  color: #5eead4; /* Мягкий акцент */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tabs {
+  margin-top: 20px;
+  width: 60%;
+}
+
+.tabList {
+  display: flex;
   justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabTrigger {
+  background: none;
+  border: none;
+  padding: 10px 20px;
   font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  cursor: pointer;
+  color: #8aa6c1; /* Нейтральный светло-серый */
+  border-radius: 5px 5px 0 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.tabTrigger[data-state="active"] {
+  background-color: #2d3342; /* Темно-синий акцент */
+  color: #d6e3f0; /* Светлый текст */
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
+.tabContent {
+  padding: 20px;
+  background-color: #2a2f3a; /* Глубокий синий */
+  border: 1px solid #5eead4; /* Мягкий акцент */
+  border-radius: 20px;
+  color: #d6e3f0; /* Светлый текст */
+
 }
 
-.footer {
-  grid-row-start: 3;
+.ratingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ratingTable th,
+.ratingTable td {
+  padding: 10px;
+  border: 1px solid #5eead4; /* Мягкий акцент */
+  text-align: center;
+}
+
+.ratingTable th {
+  background-color: #3a4150; /* Темно-серый */
+  color: #d6e3f0; /* Светлый текст */
+}
+
+.ratingTable tbody tr:nth-child(odd) {
+  background-color: #2d3342; /* Темный синий */
+}
+
+.ratingTable tbody tr:nth-child(even) {
+  background-color: #39404f; /* Чуть светлее */
+}
+
+/* Заголовок секции */
+.sectionTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #5eead4; /* Мягкий акцент */
+}
+
+/* Сетка карточек игроков */
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Карточка профиля */
+.profileCard {
   display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  background-color: #2d3342; /* Темный фон */
+  border: 1px solid #5eead4; /* Мягкий акцент */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень */
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #d6e3f0; /* Светлый текст */
+  cursor: pointer;
 }
 
-.footer img {
-  flex-shrink: 0;
+.profileCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(94, 234, 212, 0.4); /* Мягкая зеленовато-синяя тень */
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
+/* Контейнер для аватара */
+.avatarContainer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 2px solid #5eead4; /* Акцент */
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
+/* Изображение аватара */
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+/* Имя игрока */
+.playerName {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #5eead4; /* Акцент */
+  text-align: center;
 }
+
+/* Описание игрока */
+.playerDescription {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #d6e3f0; /* Светлый текст */
+}
+
+/* Детали профиля */
+.profileDetails p {
+  font-size: 14px;
+  color: #8aa6c1; /* Нейтральный светлый */
+  margin: 5px 0;
+}
+
+/* Модальное окно */
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 31, 38, 0.8);
+}
+
+.dialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2a2f3a; /* Глубокий синий */
+  border-radius: 12px; /* Сделаем углы более мягкими */
+  padding: 30px 40px; /* Увеличим отступы */
+  width: 600px; /* Увеличим ширину */
+  max-width: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Мягкая тень */
+  animation: fadeIn 0.3s ease-in-out;
+  color: #d6e3f0; /* Светлый текст */
+}
+
+.dialogTitle {
+  font-size: 28px; /* Сделаем заголовок крупнее */
+  margin-bottom: 20px; /* Увеличим отступ */
+  text-align: center;
+  color: #5eead4; /* Мягкий акцент */
+}
+
+.dialogDescription p {
+  margin: 15px 0;
+  font-size: 16px; /* Увеличим размер шрифта */
+  color: #8aa6c1; /* Нейтральный светлый */
+}
+
+.dialogAvatar {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.avatarImageLarge {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #5eead4; /* Акцент */
+}
+
+.dialogCloseButton {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #5eead4; /* Мягкий акцент */
+  color: #1e1f26; /* Темный фон */
+  border: none;
+  padding: 15px 30px; /* Увеличим размер кнопки */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.dialogCloseButton:hover {
+  background-color: #47d8b0; /* Более насыщенный акцент */
+}
+/* Секция таблицы */
+.sectionTitle {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #5eead4; /* Мягкий зелёный */
+}
+
+/* Таблица */
+.tableRoot {
+  width: 100%;
+  max-width: 900px; /* Увеличиваем ширину таблицы */
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Мягкая тень */
+  border-radius: 8px; /* Округляем углы */
+}
+
+.tableHeaderCell {
+  font-size: 18px; /* Увеличим размер шрифта */
+  font-weight: bold;
+  padding: 15px 20px; /* Увеличим отступы */
+  color: #d6e3f0; /* Светлый текст */
+  background-color: #2d3342; /* Темный фон заголовка */
+  text-transform: uppercase;
+  border-top-left-radius: 8px; /* Округляем углы */
+  border-top-right-radius: 8px;
+}
+
+.tableRowCell,
+.tableCell {
+  font-size: 16px; /* Увеличим размер шрифта */
+  padding: 12px 20px; /* Увеличим отступы */
+  color: #d6e3f0; /* Светлый текст */
+  border-bottom: 1px solid #39404f; /* Разделительные линии */
+}
+
+.tableRowCell:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5eead4; /* Акцент для первых мест */
+}
+
+/* Чередование строк */
+.tableRoot tr:nth-child(odd) {
+  background-color: #1e1f26; /* Тёмный фон для нечётных строк */
+}
+
+.tableRoot tr:nth-child(even) {
+  background-color: #2a2f3a; /* Чуть светлее */
+}
+
+/* Выделение текста рейтинга */
+.highlightText {
+  font-weight: bold;
+  color: #5eead4; /* Мягкий зелёный для выделения */
+}
+
+/* Текущая позиция (чем выше, тем ярче) */
+.tableRowCell:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5eead4; /* Акцент для первых мест */
+}
+
+/* Общий стиль для таблицы */
+.tableRoot th,
+.tableRoot td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Таблица */
+.tableRoot {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.tableRoot th,
+.tableRoot td {
+  padding: 12px 15px;
+}
+
+.tableRoot th {
+  background-color: #2d3342;
+  color: #d6e3f0;
+}
+
+.tableRoot tr:nth-child(odd) {
+  background-color: #1e1f26;
+}
+
+.tableRoot tr:nth-child(even) {
+  background-color: #2a2f3a;
+}
+
+.winText {
+  color: #5eead4; /* Зелёный для побед */
+  font-weight: bold;
+}
+
+.lossText {
+  color: #e57373; /* Красный для поражений */
+  font-weight: bold;
+}
+
+.winRow {
+  border-left: 5px solid #5eead4; /* Зелёная линия для побед */
+}
+
+.lossRow {
+  border-left: 5px solid #e57373; /* Красная линия для поражений */
+}
+
+.containerLayout{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
