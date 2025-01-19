@@ -1,0 +1,108 @@
+/* Общий контейнер страницы */
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e1f26, #3a3f51);
+    padding: 20px;
+  }
+  
+  /* Карточка регистрации */
+  .authBox {
+    background: rgba(45, 51, 66, 0.9);
+    padding: 50px 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+
+  
+  /* Заголовок */
+  .authHeading {
+    font-size: 32px;
+    color: #5eead4;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+  
+  /* Контейнер для инпутов */
+  .inputBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  /* Стилизация полей ввода */
+  .authInput {
+
+    padding: 14px 18px;
+    border: 2px solid #5eead4;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #2d3342;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .authInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .authInput:focus {
+    border-color: #47d8b0;
+    box-shadow: 0 0 12px rgba(94, 234, 212, 0.8);
+  }
+  
+  /* Кнопка регистрации */
+  .authButton {
+    background-color: #5eead4;
+    color: #1e1f26;
+    font-size: 20px;
+    padding: 14px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+    font-weight: 600;
+  }
+  
+  .authButton:hover {
+    background-color: #47d8b0;
+    box-shadow: 0 5px 15px rgba(71, 216, 176, 0.7);
+  }
+  
+  /* Ссылки */
+  .authLinks {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .authLink {
+    color: #5eead4;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .authLink:hover {
+    text-decoration: underline;
+    color: #47d8b0;
+  }
+  

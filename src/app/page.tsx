@@ -3,7 +3,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import styles from "./page.module.css"
 import { useState } from "react";
-import { Avatar, Button, Table, Tabs, Theme } from "@radix-ui/themes";
+import { Avatar, Button, Link, Table, Tabs, Theme } from "@radix-ui/themes";
 import * as Accordion from "@radix-ui/react-accordion";
 
 
@@ -93,11 +93,24 @@ export default function Home() {
   return (
     <Theme accentColor="crimson" grayColor="sand" radius="large" scaling="95%">
     <div className={styles.main}>
-      <div className={styles.header}>
-        <h1>
-          Рейтинговая таблица клана <span className={styles.highlight}>CULT</span>
-        </h1>
+    <div className={styles.header}>
+      
+      <h1>
+        Рейтинговая таблица клана <span className={styles.highlight}>CULT</span>
+      </h1>
+      <div className={styles.authButtons}>
+        <Link href="/register">
+          <Button variant="solid" className={styles.authButton}>
+            Регистрация
+          </Button>
+        </Link>
+        <Link href="/login">
+          <Button variant="outline" className={styles.authButton}>
+            Вход
+          </Button>
+        </Link>
       </div>
+    </div>
       <Tabs.Root className={styles.tabs} defaultValue="info">
         <Tabs.List className={styles.tabList} aria-label="Clan information">
           <Tabs.Trigger value="info" className={styles.tabTrigger}>

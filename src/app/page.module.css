@@ -349,5 +349,13 @@
   flex-direction: column;
 }
 
+.authButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+
+
 
 
